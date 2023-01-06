@@ -20,13 +20,13 @@ module.exports = {
     entry: {
         index: {
             import: "./src/index.js",
-            dependOn: 'shared',
+            // dependOn: 'shared',
         },
         another: {
             import: "./src/another-module.js",
-            dependOn: 'shared',
+            // dependOn: 'shared',
         },
-        shared: 'lodash',
+        // shared: 'lodash',
     },
     devtool: "source-map",
     devServer: {
