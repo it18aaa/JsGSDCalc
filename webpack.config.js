@@ -12,7 +12,7 @@ const linterOptions = {
     fix: false,
     cache: false,
     formatter: require('eslint-friendly-formatter'),
-}
+};
 
 module.exports = {
     // mode: "production",
