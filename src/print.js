@@ -1,4 +1,4 @@
-export default function printMe() {
+function printMe() {
     console.log('I get called from print.js!');
     
     let boing = [1,2,3,4];
@@ -7,3 +7,5 @@ export default function printMe() {
 
     console.log(`a is ${a}, b is ${b}`);
 }
+
+export { printMe };
