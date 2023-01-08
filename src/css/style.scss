@@ -1,0 +1,48 @@
+@use 'sass:color';
+@import "bootstrap";
+
+$btncolor: rgb(240,240,240);
+$btntextcolor: rgb(0, 0,0);
+$shadow-color: rgb(46,46,46, 0.3);
+$background-color: rgb(255,255,255);
+
+@mixin shadow {
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease 0s;
+    border: 1px solid darken($btncolor, 5%);
+};
+
+@mixin shadow-down {
+    box-shadow: 0px 15px 20px $shadow-color;    
+    transform: translateY(2px);   
+    transition: all 0.4s ease 0s;
+    border: 1px solid rgb(240,240,240);
+};
+
+body {
+    background-color: $background-color;
+    // color: $text-color;
+    // font-size: $fontsize;
+}
+
+h1 {
+    // color: $heading-color;
+}
+
+.btn {
+    // font-size: $btntextsize;    
+    background-color: $btncolor;
+    margin: 5px;
+    border-radius: 45px;
+    
+    @include shadow;
+    &:hover {
+        color: $btntextcolor;
+        background-color: lighten($btncolor, 13%);        
+        @include shadow-down;
+    }    
+}
+
+.btn-sm {
+    @extend .btn;
+}

@@ -1,6 +1,7 @@
 
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 const ESLintWebpackPlugin = require("eslint-webpack-plugin");
 
 const linterOptions = {
@@ -31,6 +32,15 @@ module.exports = {
     devtool: "source-map",
     devServer: {
         static: "./dist",
+        port: 3001,
+        // the following allows SPA url routing, routed back to indexhtml
+        historyApiFallback: {
+            index: 'index.html',
+            // rewrites subdirectory routes...
+            rewrites: [
+                { from: /\/test/, to: '/index.html'}
+            ]
+        },
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -62,6 +72,26 @@ module.exports = {
                 test: /\.js$/,
                 include: path.resolve(__dirname, 'src'),
                 use: 'babel-loader',
+            },
+            // {
+            //     test: /\.(css)$/,
+            //     use: ['style-loader', 'css-loader']
+            // },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => [
+                                require('autoprefixer')
+                            ]
+                        }
+                    },
+                    "sass-loader",
+                ],
             }
         ]
     }
